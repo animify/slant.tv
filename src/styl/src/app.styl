@@ -1,0 +1,36 @@
+.inner.contain
+	margin-top 2rem
+
+.movie
+	margin-top 30px
+	figure
+		margin 0
+		padding 0
+		overflow hidden
+		position relative
+		.poster
+			width 100%
+			padding-top: 147.8%
+			background-size 110%
+			background-repeat no-repeat
+			background-position: center center
+			transition all .14s ease-in
+			opacity .8
+		.desc
+			absolute bottom left
+			width 100%
+			color #fff
+			background linear-gradient(bottom, rgba(0,0,0,1), rgba(0,0,0, 0))
+			height 50%
+			&-inner
+				absolute bottom left
+				padding 1.3rem
+			h4
+				font-weight 600
+			h6
+				margin-top .3rem
+				color #DADBE4
+	&:hover
+		figure .poster
+			background-size 130%
+			opacity 1

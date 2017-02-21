@@ -1,0 +1,35 @@
+nav.sidebar
+	width 100%
+	background-color #fff
+	height auto
+	padding 2rem
+	display block
+	cf()
+	ul
+		li
+			width 4rem
+			text-align center
+			display inline-block
+			vertical-align top
+			&.search
+				margin-left 1.3rem
+				position relative
+				i
+					absolute left top .74rem
+					font-size 1.4rem
+					color color-smoke
+				input
+					padding 0 1rem 0 1.8rem
+					margin .6rem 0
+					min-width 26em
+					border 0
+					outline 0
+					transition border-color .14s ease
+					font-family font-family-standard
+					font-size 1.3rem
+					line-height 1.3rem
+					+placeholder()
+						color dark-color-smoke
+			&.logo
+				img
+					width 70%
