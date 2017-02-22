@@ -1,5 +1,6 @@
 .inner.contain
 	margin-top 2rem
+	padding-bottom 2rem
 
 .movie
 	margin-top 30px
@@ -35,21 +36,49 @@
 			background-size 130%
 			opacity 1
 
-.adaptive
-	.poster
-		&-overlay
-			background linear-gradient(bottom, rgba(20,21,29,1), rgba(20,21,29, .4))
-			width 100%
-			height 100%
+body.adaptive
+	background-color lighten(color-smoke, 60%)
+	nav
+		li.search
+			input
+				color #fff
+				+placeholder()
+					color color-smoke
+	.nooverflow
 		absolute top left
 		height 37%
-		z-index -1
 		width 100%
-		background-size cover
-		background-repeat no-repeat
-		background-position center 10%
+		z-index -1
+		overflow hidden
+		+below('m')
+			height 26%
+		.poster
+			&-overlay
+				background linear-gradient(bottom, rgba(20,21,29,1), rgba(20,21,29, .4))
+				width 100%
+				height 100%
+			width 100%
+			height 100%
+			absolute top -2% left -2%
+			background-size cover
+			background-repeat no-repeat
+			background-position center 30%
+			filter blur(8px)
+			transform: scale(1.1)
 .display_movie
 	margin-top 3rem
+	.m-3
+		+below('m')
+			display none
+	.m-9
+		padding 0 1.6rem
+		.button.block
+			display none
+		+below('m')
+			padding 0 1rem
+			.button.block
+				display block
+				margin-top 2rem
 	figure
 		padding 0
 		margin 0
@@ -58,21 +87,21 @@
 	.m0_desc
 		margin-top 5rem
 	.m0_sub
-		text-transform uppercase
-		color color-primary
-		font-weight 500
+		color #818894
 		margin-bottom .4rem
-		font-size 1.1rem
-		&.side
-			color #606165
+		font-size 1.2rem
 	.m0_block
 		width 100%
 		display block
 		height auto
 		line-height 1.4rem
 		font-size 1.1rem
+		background-color #fff
+		border-radius border-radius-normal
+		padding 1.2rem 1.4rem
+		box-shadow 0 1px 3px 0 rgba(20,21,29, .15)
 		& + .m0_block
-			margin-top 2.4rem
+			margin-top 2rem
 		&.rating
 			span
 				font-weight 600
@@ -85,9 +114,14 @@
 		font-weight 600
 		margin-top 7.3rem
 		color #fff
+		+below('m')
+			margin-top .5rem
 		span.m0_year
 			font-weight 400
 			margin-left .4rem
 			color #DADBE4
 	.m0_poster
-		border 4px solid white
+		img
+			border 4px solid white
+		+below('m')
+			display none

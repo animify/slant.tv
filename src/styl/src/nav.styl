@@ -3,24 +3,27 @@ nav.sidebar
 	height auto
 	padding 2rem
 	display block
+	overflow hidden
 	cf()
+	+below('m')
+		padding-left 1rem
+		padding-right 1rem
 	ul
 		li
-			width 4rem
 			text-align center
 			display inline-block
 			vertical-align top
 			&.search
-				margin-left 1.3rem
+				margin-left 1.4rem
 				position relative
 				i
-					absolute left top .74rem
+					absolute left top .41rem
 					font-size 1.4rem
-					color color-smoke
+					color dark-color-smoke
 				input
-					padding 0 1rem 0 1.8rem
-					margin .6rem 0
-					min-width 26em
+					padding 0 1rem 0 1.9rem
+					margin .3rem 0
+					min-width 18em
 					border 0
 					outline 0
 					transition border-color .14s ease
@@ -29,7 +32,7 @@ nav.sidebar
 					line-height 1.3rem
 					background transparent
 					+placeholder()
-						color dark-color-smoke
+						color darken(dark-color-smoke, 10%)
 			&.logo
 				img
-					width 70%
+					float left

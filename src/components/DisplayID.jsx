@@ -35,27 +35,44 @@ class DisplayResults extends BaseComponent {
 			url: `http://www.omdbapi.com/?i=${imdbID}&plot=full&r=json`,
 			success: function loadDataSuccess(data) {
 				if (data.Response == "False") return this.context.router.push('/')
-				this.setState({titleResults: data})
+				console.log(data.imdbid);
+				$.get(`https://yts.ag/api/v2/list_movies.json?sort=seeds&query_term=${data.imdbID}`, (torrent) => {
+					var newState = ''
+					console.log(torrent);
+					torrent.data.movie_count == 0 ? newState = {titleResults: data} : newState = {titleResults: data, torrentURL: torrent.data.movies[0].torrents[0].url, background: torrent.data.movies[0].background_image_original}
+					console.log(newState);
+					this.setState(newState)
+				})
 			}.bind(this)
 		})
 	}
 
 	render() {
 		const movie = this.state.titleResults
-		if (movie.Poster) movie.Background = movie.Poster.replace('SX300', 'SX800')
+		const bg = this.state.background
+		if (bg != null)
+			movie.Background = bg
+			else if (movie.Poster)
+			movie.Background = movie.Poster.replace('SX300', 'SX800')
+
+
 		const newStyle = {backgroundImage : "url(" + movie.Background + ")"}
 
 		return (
 			<div>
-				<div className="poster" style={newStyle}>
-					<div className="poster-overlay"/>
+				<div className="nooverflow">
+					<div className="poster" style={newStyle}>
+						<div className="poster-overlay"/>
+					</div>
 				</div>
 				<div className="inner contain">
 					<div className="grid-row display_movie">
-						<div className="m-3">
+						<div className="xs-12 m-3">
 							<figure className="m0_poster"><img src={((movie.Poster != "N/A") ? movie.Poster : "/images/n-a.jpg")}/></figure>
+							<a href={`http://www.imdb.com/title/${movie.imdbID}/`} className="button block black">More on IMDB</a>
+							{this.state.torrentURL ? <a href={this.state.torrentURL} download className="button block default">Download torrent via. Yify</a> : null}
 						</div>
-						<div className="m-9">
+						<div className="xs-12 m-9">
 							<h3 className="m0_title">{movie.Title}<span className="m0_year">({movie.Year})</span></h3>
 							<div className="grid-row m0_desc">
 								<div className="xs-12 m-4">
@@ -67,7 +84,7 @@ class DisplayResults extends BaseComponent {
 										<div className="grid-row">
 											<div className="xs-6">
 												<h5 className="m0_sub side">Rating</h5>
-												{movie.imdbRating}
+												{movie.imdbRating}/10
 											</div>
 											<div className="xs-6">
 												<h5 className="m0_sub side">Votes</h5>
@@ -75,7 +92,6 @@ class DisplayResults extends BaseComponent {
 											</div>
 										</div>
 									</div>
-
 
 									<div className="m0_block">
 										<h5 className="m0_sub side">Awards</h5>
@@ -125,6 +141,8 @@ class DisplayResults extends BaseComponent {
 										<h5 className="m0_sub">Release Date</h5>
 										{movie.Released}
 									</div>
+									<a href={`http://www.imdb.com/title/${movie.imdbID}/`} className="button block black">More on IMDB</a>
+
 								</div>
 							</div>
 							</div>
