@@ -20,7 +20,7 @@
 			absolute bottom left
 			width 100%
 			color #fff
-			background linear-gradient(bottom, rgba(0,0,0,1), rgba(0,0,0, 0))
+			background linear-gradient(bottom,  rgba(20,21,29,1), rgba(0,0,0, 0))
 			height 50%
 			&-inner
 				absolute bottom left
@@ -34,3 +34,60 @@
 		figure .poster
 			background-size 130%
 			opacity 1
+
+.adaptive
+	.poster
+		&-overlay
+			background linear-gradient(bottom, rgba(20,21,29,1), rgba(20,21,29, .4))
+			width 100%
+			height 100%
+		absolute top left
+		height 37%
+		z-index -1
+		width 100%
+		background-size cover
+		background-repeat no-repeat
+		background-position center 10%
+.display_movie
+	margin-top 3rem
+	figure
+		padding 0
+		margin 0
+		img
+			width 100%
+	.m0_desc
+		margin-top 5rem
+	.m0_sub
+		text-transform uppercase
+		color color-primary
+		font-weight 500
+		margin-bottom .4rem
+		font-size 1.1rem
+		&.side
+			color #606165
+	.m0_block
+		width 100%
+		display block
+		height auto
+		line-height 1.4rem
+		font-size 1.1rem
+		& + .m0_block
+			margin-top 2.4rem
+		&.rating
+			span
+				font-weight 600
+				font-size 1.4rem
+	.m0_inline
+		display inline-block
+		vertical-align top
+		line-height 1.3rem
+	.m0_title
+		font-weight 600
+		margin-top 7.3rem
+		color #fff
+		span.m0_year
+			font-weight 400
+			margin-left .4rem
+			color #DADBE4
+	.m0_poster
+		border 4px solid white

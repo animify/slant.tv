@@ -16,5 +16,6 @@ ReactDOM.render(
 	<Router history={browserHistory}>
 	<Route path="/" component={Controller} />
 	<Route path="/search/:id" component={Controller} addHandlerKey={true} results={true}/>
+	<Route path="/id/:id" component={Controller} addHandlerKey={true} show={true}/>
 	<Route path="*" component={PageNotFound} />
 </Router>, document.getElementById('main'))

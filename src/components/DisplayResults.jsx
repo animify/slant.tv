@@ -3,7 +3,6 @@ import $ from 'jquery'
 import Link from 'react-router/lib/Link'
 
 import BaseComponent from './common/BaseComponent'
-import NavBar from './NavBar'
 
 class DisplayResults extends BaseComponent {
 	constructor() {

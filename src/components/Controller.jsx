@@ -5,6 +5,7 @@ import BaseComponent from './common/BaseComponent'
 import NewSearch from './NewSearch'
 import NavBar from './NavBar'
 import DisplayResults from './DisplayResults'
+import DisplayID from './DisplayID'
 
 const keyMap = {
 	'savePaste': ['command+s', 'ctrl+s']
@@ -43,8 +44,8 @@ class Controller extends BaseComponent {
 
 		return (
 			<div>
-				{this.props.route.results ? <NavBar displayType={this.props.route.results ? true : false}/> : null}
-				{this.props.route.results ? <DisplayResults resultsFor={this.state.searchFor}/> : <NewSearch/>}
+				<NavBar displayType={this.props.route.results ? true : false}/>
+				{this.props.route.results ? <DisplayResults resultsFor={this.state.searchFor}/> : <DisplayID imdbID={this.props.params.id}/>}
 			</div>
 		)
 	}
