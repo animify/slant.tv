@@ -84,7 +84,7 @@ class DisplayResults extends BaseComponent {
 										<div className="grid-row">
 											<div className="xs-6">
 												<h5 className="m0_sub side">Rating</h5>
-												{movie.imdbRating}/10
+												{movie.imdbRating != "N/A" ? `${movie.imdbRating}/10` : movie.imdbRating}
 											</div>
 											<div className="xs-6">
 												<h5 className="m0_sub side">Votes</h5>
@@ -107,14 +107,14 @@ class DisplayResults extends BaseComponent {
 												{movie.Language}
 											</div>
 											<div className="xs-6">
-											<h5 className="m0_sub">runtime</h5>
+											<h5 className="m0_sub">Runtime</h5>
 											{movie.Runtime}
 											</div>
 										</div>
 									</div>
 
 									<div className="m0_block">
-										<h5 className="m0_sub">Short description</h5>
+										<h5 className="m0_sub">Full description</h5>
 										{movie.Plot}
 									</div>
 									<div className="m0_block">

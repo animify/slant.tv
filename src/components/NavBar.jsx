@@ -22,8 +22,9 @@ class NavBar extends BaseComponent {
 		return (
 			<nav className="sidebar">
 				<ul>
-					<li className="logo"><img src="/images/logo.png"/></li>
-					<li className="search"><i className="ion-ios-search-strong"/><input id="search" onKeyPress={this.handleKeyPress} placeholder="Search for a movie..." type="text"/></li>
+					<li className="logo"><Link to="/"><img src="/images/logo.png"/></Link></li>
+					<li className="logo mobile"><img src="/images/logo_small.png"/></li>
+					<li className="search"><i className="ion-ios-search-strong"/><input id="search" onKeyPress={this.handleKeyPress} placeholder="Search for a movie or series..." type="text"/></li>
 				</ul>
 			</nav>
 		)

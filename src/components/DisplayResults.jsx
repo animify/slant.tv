@@ -20,6 +20,7 @@ class DisplayResults extends BaseComponent {
 
 	componentDidMount() {
 		this.loadSearch()
+		document.getElementById('search').value = this.props.resultsFor
 	}
 
 	componentDidUpdate(nextProps) {

@@ -1,3 +1,64 @@
+.search
+	footer
+		display block
+		margin 0 auto
+		width 100%
+		absolute bottom
+		li
+			float left
+			+below('m')
+				float none
+	.home-search
+		display flex
+		align-items center
+		align-content: flex-end
+		flex-flow: row wrap
+		justify-content center
+		text-align center
+		flex-direction column
+	.align-search
+		max-width 80%
+		width 100%
+		padding 1rem
+		margin-top -5rem
+		+below('m')
+			max-width 100%
+		.logo
+			width 80%
+			display block
+			margin 0 auto
+			+below('m')
+				width 70%
+			img
+				max-width 16em
+				width 100%
+				height auto
+		.button
+			padding 1rem 3.4rem
+			font-size 1.1rem
+			line-height 1.15rem
+			margin-top 1.6rem
+		input
+			font-family font-family-standard
+			font-size 1.3rem
+			border 1px solid border-gray
+			outline 0
+			box-shadow 0 1px 3px 0 rgba(20,21,29, .15)
+			width 100%
+			min-width 0
+			padding 1rem 1.4rem
+			margin-top 1.6rem
+			&.error
+				border-color color-red
+				box-shadow 0 1px 4px 0 rgba(237,20,59,.45) !important
+				+placeholder()
+					color lighten(color-red, 50%)
+			&:focus
+				box-shadow 0 1px 4px 0 rgba(20,21,29, .25)
+			+placeholder()
+				color darken(dark-color-smoke, 10%)
+			+below('m')
+				font-size 1rem
 .inner.contain
 	margin-top 2rem
 	padding-bottom 2rem
@@ -36,6 +97,11 @@
 			background-size 130%
 			opacity 1
 
+body.search
+	background-color lighten(color-smoke, 60%)
+	footer
+		background-color transparent
+
 body.adaptive
 	background-color lighten(color-smoke, 60%)
 	nav
@@ -50,6 +116,7 @@ body.adaptive
 		width 100%
 		z-index -1
 		overflow hidden
+		min-height 23.5em
 		+below('m')
 			height 26%
 		.poster
@@ -67,6 +134,8 @@ body.adaptive
 			transform: scale(1.1)
 .display_movie
 	margin-top 3rem
+	+below('m')
+		margin-top 6rem
 	.m-3
 		+below('m')
 			display none
@@ -86,6 +155,8 @@ body.adaptive
 			width 100%
 	.m0_desc
 		margin-top 5rem
+		+below('m')
+			margin-top 2rem
 	.m0_sub
 		color #818894
 		margin-bottom .4rem
@@ -106,6 +177,9 @@ body.adaptive
 			span
 				font-weight 600
 				font-size 1.4rem
+		&.type
+			span
+				text-transform capitalize
 	.m0_inline
 		display inline-block
 		vertical-align top
@@ -125,3 +199,29 @@ body.adaptive
 			border 4px solid white
 		+below('m')
 			display none
+
+footer
+	padding 2.2rem 0
+	margin-top 1rem
+	background-color #fff
+	ul
+		li
+			display inline-block
+			color #818894
+			font-size 1.1rem
+			a
+				color text-grey
+				&:hover
+					color color-primary
+			& + li
+				margin-left 2.2rem
+			&.by
+				float right
+		+below('m')
+			text-align center
+			li
+				display block
+				&.by
+					float none
+				& + li
+					margin 1.3rem 0 0 0

@@ -5,9 +5,6 @@ nav.sidebar
 	display block
 	overflow hidden
 	cf()
-	+below('m')
-		padding-left 1rem
-		padding-right 1rem
 	ul
 		li
 			text-align center
@@ -36,3 +33,20 @@ nav.sidebar
 			&.logo
 				img
 					float left
+				&.mobile
+					display none
+	+below('m')
+		padding-left 1rem
+		padding-right 1rem
+		li.logo
+			display none
+		li.mobile
+			display block !important
+		li.search
+			margin-left 0 !important
+			i
+				display none
+			input
+				font-size 1.1rem !important
+				min-width 14em !important
+				padding 0 1rem !important

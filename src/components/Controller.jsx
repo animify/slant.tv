@@ -4,8 +4,10 @@ import $ from 'jquery'
 import BaseComponent from './common/BaseComponent'
 import NewSearch from './NewSearch'
 import NavBar from './NavBar'
+import NavFooter from './NavFooter'
 import DisplayResults from './DisplayResults'
 import DisplayID from './DisplayID'
+import HomeSearch from './HomeSearch'
 
 const keyMap = {
 	'savePaste': ['command+s', 'ctrl+s']
@@ -42,10 +44,12 @@ class Controller extends BaseComponent {
 			}
 		}
 
+console.log(this.props.route.home);
 		return (
 			<div>
-				<NavBar displayType={this.props.route.results ? true : false}/>
-				{this.props.route.results ? <DisplayResults resultsFor={this.state.searchFor}/> : <DisplayID imdbID={this.props.params.id}/>}
+				{!this.props.route.home ? <NavBar/> : null}
+				{this.props.route.home ? <HomeSearch/> : ((this.props.route.results) ? <DisplayResults resultsFor={this.state.searchFor}/> : <DisplayID imdbID={this.props.params.id}/>)}
+				{!this.props.route.home ? <NavFooter/> : null}
 			</div>
 		)
 	}

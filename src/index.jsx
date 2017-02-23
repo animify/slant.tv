@@ -14,7 +14,7 @@ import PageNotFound from './components/PageNotFound'
 
 ReactDOM.render(
 	<Router history={browserHistory}>
-	<Route path="/" component={Controller} />
+	<Route path="/" component={Controller} addHandlerKey={true} home={true} />
 	<Route path="/search/:id" component={Controller} addHandlerKey={true} results={true}/>
 	<Route path="/id/:id" component={Controller} addHandlerKey={true} show={true}/>
 	<Route path="*" component={PageNotFound} />
