@@ -45,7 +45,7 @@ class HomeSearch extends BaseComponent {
 					<div className="align-search">
 						<div className="logo"><img src="/images/logo_large.png"/></div>
 						<input id="r-search" type="text" placeholder="Search for a movie or series..." onKeyPress={this.handleKeyPress}/>
-						<a className="button outlined" onClick={this.goToSearch}>Search content</a>
+						<a className="button outlined" onClick={this.goToSearch}>Search movies & TV series</a>
 					</div>
 					<NavFooter/>
 				</div>

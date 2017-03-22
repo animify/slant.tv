@@ -1,9 +1,10 @@
 .search
+	&.bind
+		height 100vh
 	footer
 		display block
 		margin 0 auto
 		width 100%
-		absolute bottom
 		li
 			float left
 			+below('m')
@@ -35,26 +36,26 @@
 				height auto
 		.button
 			padding 1rem 3.4rem
-			font-size 1.1rem
-			line-height 1.15rem
-			margin-top 1.6rem
+			font-size 1.2rem
+			line-height 1.44rem
+			margin-top 1.8rem
 		input
 			font-family font-family-standard
 			font-size 1.3rem
 			border 1px solid border-gray
 			outline 0
-			box-shadow 0 1px 3px 0 rgba(20,21,29, .15)
+			box-shadow 0 1px 4px 3px rgba(20, 21, 29, 0.04)
 			width 100%
 			min-width 0
-			padding 1rem 1.4rem
-			margin-top 1.6rem
+			padding 1.3rem 1.8rem
+			margin-top 1.8rem
 			&.error
 				border-color color-red
 				box-shadow 0 1px 4px 0 rgba(237,20,59,.45) !important
 				+placeholder()
 					color lighten(color-red, 50%)
 			&:focus
-				box-shadow 0 1px 4px 0 rgba(20,21,29, .25)
+				box-shadow 0 1px 8px 3px rgba(20, 21, 29, 0.07)
 			+placeholder()
 				color darken(dark-color-smoke, 10%)
 			+below('m')
@@ -62,6 +63,20 @@
 .inner.contain
 	margin-top 2rem
 	padding-bottom 2rem
+
+.no_results
+	width 100%
+	text-align center
+	padding 8rem 0 4rem 0
+	img
+		height 200px
+	h2
+		margin-top 2rem
+		display block
+		font-weight 600
+		line-height 1.5em
+	h5
+		line-height 1.5em
 
 .movie
 	margin-top 30px
@@ -203,12 +218,18 @@ body.adaptive
 footer
 	padding 2.2rem 0
 	margin-top 1rem
-	background-color #fff
+	absolute bottom left
+	width 100%
+	text-align center
 	ul
+		display block
+		margin 0 auto
+		cf()
 		li
 			display inline-block
 			color #818894
 			font-size 1.1rem
+			float left
 			a
 				color text-grey
 				&:hover
@@ -221,6 +242,7 @@ footer
 			text-align center
 			li
 				display block
+				float none
 				&.by
 					float none
 				& + li

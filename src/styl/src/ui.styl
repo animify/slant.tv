@@ -11,6 +11,8 @@ body
 	margin 0
 	padding 0
 	height 100%
+	-webkit-font-smoothing antialiase
+	-moz-osx-font-smoothing grayscal
 
 for h in (1..6)
 	h{h}
@@ -37,8 +39,12 @@ strong
 	font-weight 700
 
 #main
-	height 100%
+	min-height 100%
 	width 100%
+	position relative
+	padding-bottom 6rem
+	+below('m')
+		padding-bottom 10rem
 	& > div
 		height 100%
 		cf()

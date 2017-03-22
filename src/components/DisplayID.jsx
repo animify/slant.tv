@@ -18,6 +18,7 @@ class DisplayResults extends BaseComponent {
 	componentDidMount() {
 		$('body').addClass('adaptive')
 		this.loadID()
+		window.scrollTo(0, 0)
 	}
 
 	componentWillUnmount() {
