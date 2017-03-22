@@ -1,6 +1,7 @@
 .search
 	&.bind
-		height 100vh
+		height 100%
+		position static
 	footer
 		display block
 		margin 0 auto
@@ -21,7 +22,6 @@
 		max-width 80%
 		width 100%
 		padding 1rem
-		margin-top -5rem
 		+below('m')
 			max-width 100%
 		.logo
@@ -37,7 +37,7 @@
 		.button
 			padding 1rem 3.4rem
 			font-size 1.2rem
-			line-height 1.44rem
+			line-height 1.5rem
 			margin-top 1.8rem
 		input
 			font-family font-family-standard
@@ -127,13 +127,13 @@ body.adaptive
 					color color-smoke
 	.nooverflow
 		absolute top left
-		height 37%
+		height 21%
 		width 100%
 		z-index -1
 		overflow hidden
-		min-height 23.5em
+		min-height 24.3em
 		+below('m')
-			height 26%
+			height 10.5%
 		.poster
 			&-overlay
 				background linear-gradient(bottom, rgba(20,21,29,1), rgba(20,21,29, .4))
@@ -150,7 +150,7 @@ body.adaptive
 .display_movie
 	margin-top 3rem
 	+below('m')
-		margin-top 6rem
+		margin-top 0
 	.m-3
 		+below('m')
 			display none

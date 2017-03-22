@@ -13,10 +13,12 @@ class HomeSearch extends BaseComponent {
 
 	componentWillMount() {
 		$('body').addClass('search')
+		$('#main').addClass('cover')
 	}
 
 	componentWillUnmount() {
 		$('body').removeClass('search')
+		$('#main').removeClass('cover')
 	}
 
 	goToSearch () {
@@ -45,7 +47,7 @@ class HomeSearch extends BaseComponent {
 					<div className="align-search">
 						<div className="logo"><img src="/images/logo_large.png"/></div>
 						<input id="r-search" type="text" placeholder="Search for a movie or series..." onKeyPress={this.handleKeyPress}/>
-						<a className="button outlined" onClick={this.goToSearch}>Search movies & TV series</a>
+						<a className="button outlined" onClick={this.goToSearch}>Explore content</a>
 					</div>
 					<NavFooter/>
 				</div>
