@@ -12,8 +12,6 @@ class NavBar extends BaseComponent {
 
 	handleKeyPress (event) {
 		if(event.key == 'Enter') {
-			console.debug('Event: enter')
-			console.debug('Redirecting')
 			this.context.router.push(`/search/${document.getElementById('search').value}`)
 		}
 	}

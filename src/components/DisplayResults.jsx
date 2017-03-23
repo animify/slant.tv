@@ -74,7 +74,6 @@ class DisplayResults extends BaseComponent {
 				)
 			})
 		}
-		console.log('arr', objArr);
 		return (
 			<div className="inner contain">
 				<h2>Search results: <b>{this.state.resultsFor}</b></h2>

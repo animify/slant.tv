@@ -2,16 +2,11 @@ import React from 'react'
 import $ from 'jquery'
 
 import BaseComponent from './common/BaseComponent'
-import NewSearch from './NewSearch'
 import NavBar from './NavBar'
 import NavFooter from './NavFooter'
 import DisplayResults from './DisplayResults'
 import DisplayID from './DisplayID'
 import HomeSearch from './HomeSearch'
-
-const keyMap = {
-	'savePaste': ['command+s', 'ctrl+s']
-}
 
 class Controller extends BaseComponent {
 	constructor() {
@@ -36,15 +31,6 @@ class Controller extends BaseComponent {
 	}
 
 	render() {
-		const handlers = {
-			'savePaste': (event) => {
-				event.preventDefault()
-				console.debug('Paste: saving')
-				this.handleSave()
-			}
-		}
-
-console.log(this.props.route.home);
 		return (
 			<div>
 				{!this.props.route.home ? <NavBar/> : null}

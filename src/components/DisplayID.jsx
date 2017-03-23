@@ -36,12 +36,9 @@ class DisplayResults extends BaseComponent {
 			url: `http://www.omdbapi.com/?i=${imdbID}&plot=full&r=json`,
 			success: function loadDataSuccess(data) {
 				if (data.Response == "False") return this.context.router.push('/')
-				console.log(data.imdbid);
 				$.get(`https://yts.ag/api/v2/list_movies.json?sort=seeds&query_term=${data.imdbID}`, (torrent) => {
 					var newState = ''
-					console.log(torrent);
 					torrent.data.movie_count == 0 ? newState = {titleResults: data} : newState = {titleResults: data, torrentURL: torrent.data.movies[0].torrents[0].url, background: torrent.data.movies[0].background_image_original}
-					console.log(newState);
 					this.setState(newState)
 				})
 			}.bind(this)
