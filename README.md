@@ -13,4 +13,4 @@ Slant.tv does not store any movies, tv-series, torrents or user data. Slant.tv i
 If you find any issues please let post in the issues section on this repository. If you can fix the problem then by all means make a pull request so I can approve it.
 
 ## License
-MIT License - cindr.io
+GPL-3 License - cindr.io
