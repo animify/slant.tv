@@ -68,7 +68,7 @@ class DisplayResults extends BaseComponent {
 						<div className="xs-12 m-3">
 							<figure className="m0_poster"><img src={((movie.Poster != "N/A") ? movie.Poster : "/images/n-a.jpg")}/></figure>
 							<a href={`http://www.imdb.com/title/${movie.imdbID}/`} className="button block black">More on IMDB</a>
-							{this.state.torrentURL ? <a href={this.state.torrentURL} download className="button block default">Download torrent via. Yify</a> : null}
+							{this.state.torrentURL ? <a rel="noopener noreferrer" target="_blank" href={this.state.torrentURL} download className="button block default">Download torrent via. Yify</a> : null}
 						</div>
 						<div className="xs-12 m-9">
 							<h3 className="m0_title">{movie.Title}<span className="m0_year">({movie.Year})</span></h3>
