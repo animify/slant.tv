@@ -1,5 +1,5 @@
-public/bundle.js
 public/bundle.js.map
-public/images
+public/*.json
 *.log
 node_modules
+key.json
