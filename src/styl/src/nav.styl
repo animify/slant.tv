@@ -1,52 +1,53 @@
 nav.sidebar
-	width 100%
-	height auto
-	padding 2rem
-	display block
-	overflow hidden
-	cf()
-	ul
-		li
-			text-align center
-			display inline-block
-			vertical-align top
-			&.search
-				margin-left 1.4rem
-				position relative
-				i
-					absolute left top .41rem
-					font-size 1.4rem
-					color dark-color-smoke
-				input
-					padding 0 1rem 0 1.9rem
-					margin .3rem 0
-					min-width 18em
-					border 0
-					outline 0
-					transition border-color .14s ease
-					font-family font-family-standard
-					font-size 1.3rem
-					line-height 1.3rem
-					background transparent
-					+placeholder()
-						color darken(dark-color-smoke, 10%)
-			&.logo
-				img
-					float left
-				&.mobile
-					display none
-	+below('m')
-		padding-left 1rem
-		padding-right 1rem
-		li.logo
-			display none
-		li.mobile
-			display block !important
-		li.search
-			margin-left 0 !important
-			i
-				display none
-			input
-				font-size 1.1rem !important
-				min-width 14em !important
-				padding 0 1rem !important
+  width 100%
+  height auto
+  padding 2rem
+  display block
+  overflow hidden
+  cf()
+  ul
+    li
+      text-align center
+      display inline-block
+      vertical-align top
+      &.search
+        margin-left 1.4rem
+        position relative
+        i
+          absolute left top .41rem
+          font-size 1.4rem
+          color dark-color-smoke
+        input
+          padding 0 1rem 0 1.9rem
+          margin .3rem 0
+          min-width 18em
+          border 0
+          outline 0
+          transition border-color .14s ease
+          font-family font-family-standard
+          font-size 1.3rem
+          line-height 1.3rem
+          background transparent
+          +placeholder()
+            color darken(dark-color-smoke, 10%)
+      &.logo
+        img
+          margin-top .3rem
+          float left
+        &.mobile
+          display none
+  +below('m')
+    padding-left 1rem
+    padding-right 1rem
+    li.logo
+      display none
+    li.mobile
+      display block !important
+    li.search
+      margin-left 0 !important
+      i
+        display none
+      input
+        font-size 1.1rem !important
+        min-width 14em !important
+        padding 0 1rem !important

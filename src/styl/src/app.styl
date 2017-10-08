@@ -1,254 +1,262 @@
 .search
-	&.bind
-		height 100%
-		position static
-	footer
-		display block
-		margin 0 auto
-		width 100%
-		li
-			float left
-			+below('m')
-				float none
-	.home-search
-		display flex
-		align-items center
-		align-content: flex-end
-		flex-flow: row wrap
-		justify-content center
-		text-align center
-		flex-direction column
-	.align-search
-		max-width 80%
-		width 100%
-		padding 1rem
-		+below('m')
-			max-width 100%
-		.logo
-			width 80%
-			display block
-			margin 0 auto
-			+below('m')
-				width 70%
-			img
-				max-width 16em
-				width 100%
-				height auto
-		.button
-			padding 1rem 3.4rem
-			font-size 1.2rem
-			line-height 1.5rem
-			margin-top 1.8rem
-		input
-			font-family font-family-standard
-			font-size 1.3rem
-			border 1px solid border-gray
-			outline 0
-			box-shadow 0 1px 4px 3px rgba(20, 21, 29, 0.04)
-			width 100%
-			min-width 0
-			padding 1.3rem 1.8rem
-			margin-top 1.8rem
-			&.error
-				border-color color-red
-				box-shadow 0 1px 4px 0 rgba(237,20,59,.45) !important
-				+placeholder()
-					color lighten(color-red, 50%)
-			&:focus
-				box-shadow 0 1px 8px 3px rgba(20, 21, 29, 0.07)
-			+placeholder()
-				color darken(dark-color-smoke, 10%)
-			+below('m')
-				font-size 1rem
+  &.bind
+    height 100%
+    position static
+  footer
+    display block
+    margin 0 auto
+    width 100%
+    li
+      float left
+      +below('m')
+        float none
+  .home-search
+    display flex
+    align-items center
+    align-content: flex-end
+    flex-flow: row wrap
+    justify-content center
+    text-align center
+    flex-direction column
+  .align-search
+    max-width 80%
+    width 100%
+    padding 1rem
+    +below('m')
+      max-width 100%
+    .logo
+      width 80%
+      display block
+      margin 0 auto
+      +below('m')
+        width 70%
+      img
+        max-width 16em
+        width 100%
+        height auto
+    .button
+      padding 1rem 3.4rem
+      font-size 1.1rem
+      line-height 1.26rem
+    input
+      font-family font-family-standard
+      font-size 1rem
+      border 1px solid border-gray
+      outline 0
+      width 100%
+      min-width 0
+      padding 1.3rem 1.8rem
+      border-radius border-radius-normal
+      margin 3rem 0
+      &.error
+        border-color color-red
+        +placeholder()
+          color lighten(color-red, 50%)
+      &:focus
+        border-color color-primary
+      +placeholder()
+        color darken(dark-color-smoke, 10%)
+      +below('m')
+        font-size 1rem
 .inner.contain
-	margin-top 2rem
-	padding-bottom 2rem
+  margin-top 2rem
+  padding-bottom 2rem
 
 .no_results
-	width 100%
-	text-align center
-	padding 8rem 0 4rem 0
-	img
-		height 200px
-	h2
-		margin-top 2rem
-		display block
-		font-weight 600
-		line-height 1.5em
-	h5
-		line-height 1.5em
+  width 100%
+  text-align center
+  padding 8rem 0 4rem 0
+  img
+    height 200px
+  h2
+    margin-top 2rem
+    display block
+    font-weight 600
+    line-height 1.5em
+  h5
+    line-height 1.5em
 
 .movie
-	margin-top 30px
-	figure
-		margin 0
-		padding 0
-		overflow hidden
-		position relative
-		.poster
-			width 100%
-			padding-top: 147.8%
-			background-size 110%
-			background-repeat no-repeat
-			background-position: center center
-			transition all .14s ease-in
-			opacity .8
-		.desc
-			absolute bottom left
-			width 100%
-			color #fff
-			background linear-gradient(bottom,  rgba(20,21,29,1), rgba(0,0,0, 0))
-			height 50%
-			&-inner
-				absolute bottom left
-				padding 1.3rem
-			h4
-				font-weight 600
-			h6
-				margin-top .3rem
-				color #DADBE4
-	&:hover
-		figure .poster
-			background-size 130%
-			opacity 1
+  margin-top 2rem
+
+  figure
+    margin 0
+    padding 0
+    overflow hidden
+    position relative
+    border-radius border-radius-normal
+    .poster
+      width 100%
+      padding-top: 147.8%
+      background-size 110%
+      background-repeat no-repeat
+      background-position: center center
+      transition all .14s ease-in
+      opacity .8
+    .desc
+      absolute bottom left
+      width 100%
+      color #fff
+      background linear-gradient(bottom,  rgba(20,21,29,1), rgba(0,0,0, 0))
+      height 50%
+      &-inner
+        absolute bottom left
+        padding 1.3rem
+      h4
+        font-weight 600
+        line-height 1.4em
+      h6
+        margin-top .3rem
+        color #DADBE4
+  &:hover
+    figure .poster
+      background-size 130%
+      opacity 1
 
 body.search
-	background-color lighten(color-smoke, 60%)
-	footer
-		background-color transparent
+  footer
+    background-color transparent
 
 body.adaptive
-	background-color lighten(color-smoke, 60%)
-	nav
-		li.search
-			input
-				color #fff
-				+placeholder()
-					color color-smoke
-	.nooverflow
-		absolute top left
-		height 21%
-		width 100%
-		z-index -1
-		overflow hidden
-		min-height 24.3em
-		+below('m')
-			height 10.5%
-		.poster
-			&-overlay
-				background linear-gradient(bottom, rgba(20,21,29,1), rgba(20,21,29, .4))
-				width 100%
-				height 100%
-			width 100%
-			height 100%
-			absolute top -2% left -2%
-			background-size cover
-			background-repeat no-repeat
-			background-position center 30%
-			filter blur(8px)
-			transform: scale(1.1)
+  background-color #fff
+  nav
+    li.search
+      input
+        color #fff
+        +placeholder()
+          color color-smoke
+  .nooverflow
+    absolute top left
+    height 21%
+    width 100%
+    z-index -1
+    overflow hidden
+    min-height 35.3em
+    +below('m')
+      height 10.5%
+    .poster
+      &-overlay
+        background linear-gradient(bottom, rgba(255,255,255,1) 30%, rgba(255,255,255, .2))
+        width 100%
+        height 100%
+      width 100%
+      height 100%
+      absolute top -2% left -2%
+      background-size cover
+      background-repeat no-repeat
+      background-position center 30%
+      transform: scale(1.1)
 .display_movie
-	margin-top 3rem
-	+below('m')
-		margin-top 0
-	.m-3
-		+below('m')
-			display none
-	.m-9
-		padding 0 1.6rem
-		.button.block
-			display none
-		+below('m')
-			padding 0 1rem
-			.button.block
-				display block
-				margin-top 2rem
-	figure
-		padding 0
-		margin 0
-		img
-			width 100%
-	.m0_desc
-		margin-top 5rem
-		+below('m')
-			margin-top 2rem
-	.m0_sub
-		color #818894
-		margin-bottom .4rem
-		font-size 1.2rem
-	.m0_block
-		width 100%
-		display block
-		height auto
-		line-height 1.4rem
-		font-size 1.1rem
-		background-color #fff
-		border-radius border-radius-normal
-		padding 1.2rem 1.4rem
-		box-shadow 0 1px 3px 0 rgba(20,21,29, .15)
-		& + .m0_block
-			margin-top 2rem
-		&.rating
-			span
-				font-weight 600
-				font-size 1.4rem
-		&.type
-			span
-				text-transform capitalize
-	.m0_inline
-		display inline-block
-		vertical-align top
-		line-height 1.3rem
-	.m0_title
-		font-weight 600
-		margin-top 7.3rem
-		color #fff
-		+below('m')
-			margin-top .5rem
-		span.m0_year
-			font-weight 400
-			margin-left .4rem
-			color #DADBE4
-	.m0_poster
-		img
-			border 4px solid white
-		+below('m')
-			display none
+  margin-top 3rem
+  +below('m')
+    margin-top 0
+  .m-3
+    +below('m')
+      display none
+  .m-9
+    padding 0 1.6rem
+    .button.block
+      display none
+    +below('m')
+      padding 0 1rem
+      .button.block
+        display block
+        margin-top 2rem
+  figure
+    padding 0
+    margin 0
+    img
+      width 100%
+  .movie
+    &_information
+      h2
+        background-color color-primary
+        color #fff
+        padding 1rem 1.5rem
+        display inline-block
+        font-weight 600
+        margin 4rem 0 1.5rem 0
+        border-radius border-radius-normal
+        & > span
+          margin-left .5rem
+          letter-spacing 0
+      p
+        color text-default
+        font-weight 500
+        font-size 1.4rem
+
+      small
+        display block
+        margin-top 1.5rem
+        font-weight 500
+    &_desc
+      margin-top 5rem
+      +below('m')
+        margin-top 2rem
+    &_sub
+      color color-primary
+      margin-bottom .6rem
+      font-size 1rem
+      font-weight 500
+    &_block
+      width 100%
+      display block
+      height auto
+      background-color #fff
+      border-bottom 1px solid border-gray
+      padding 2rem 0
+      cf()
+      &.rating
+        span
+          font-weight 600
+          font-size 1.4rem
+      &.type
+        span
+          text-transform capitalize
+    &_inline
+      display inline-block
+      vertical-align top
+      line-height 1.3rem
+    &_poster
+      img
+        border 4px solid white
+      +below('m')
+        display none
 
 footer
-	padding 2.2rem 0
-	margin-top 1rem
-	absolute bottom left
-	width 100%
-	text-align center
-	ul
-		display block
-		margin 0 auto
-		cf()
-		li
-			display inline-block
-			color #818894
-			font-size 1.1rem
-			float left
-			a
-				color text-grey
-				&:hover
-					color color-primary
-			& + li
-				margin-left 2.2rem
-			&.by
-				float right
-		+below('m')
-			text-align center
-			li
-				display block
-				float none
-				&.by
-					float none
-				& + li
-					margin 1.3rem 0 0 0
+  padding 2.5rem 0
+  margin-top 1rem
+  absolute bottom left
+  width 100%
+  text-align center
+  ul
+    display block
+    margin 0 auto
+    cf()
+    li
+      display inline-block
+      color #818894
+      font-size 1.1rem
+      float left
+      a
+        color text-grey
+        &:hover
+          color color-primary
+      & + li
+        margin-left 2.2rem
+      &.by
+        float right
+    +below('m')
+      text-align center
+      li
+        display block
+        float none
+        &.by
+          float none
+        & + li
+          margin 1.3rem 0 0 0
 
 .notFound
-	margin 2rem
-	h3
-		font-weight 800
+  margin 2rem
+  h3
+    font-weight 800

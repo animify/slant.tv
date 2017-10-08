@@ -2,11 +2,12 @@ import React from 'react'
 import $ from 'jquery'
 import Link from 'react-router/lib/Link'
 import BaseComponent from './common/BaseComponent'
-import apiKey from './../../key.json'
+import apiKey from 'json!./../../key.json'
 
 class DisplayResults extends BaseComponent {
   constructor() {
     super()
+    console.log(apiKey)
     this._bind('loadSearch')
     this.state = {
       resultsFor: null,
@@ -36,7 +37,7 @@ class DisplayResults extends BaseComponent {
     const resultsFor = this.state.resultsFor
 
     $.ajax({
-      url: `http://www.omdbapi.com/?s=${resultsFor}&apikey=${apiKey}`,
+      url: `http://www.omdbapi.com/?s=${resultsFor}&apikey=${apiKey.apiKey}`,
       success: function loadDataSuccess(data) {
         this.setState({searchResults: data.Search})
       }.bind(this)

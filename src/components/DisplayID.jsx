@@ -2,7 +2,7 @@ import React from 'react'
 import $ from 'jquery'
 import Link from 'react-router/lib/Link'
 import BaseComponent from './common/BaseComponent'
-import apiKey from './../../key.json'
+import apiKey from 'json!./../../key.json'
 
 class DisplayResults extends BaseComponent {
   constructor(props) {
@@ -33,7 +33,7 @@ class DisplayResults extends BaseComponent {
     const imdbID = this.state.imdbID
 
     $.ajax({
-      url: `http://www.omdbapi.com/?i=${imdbID}&plot=full&r=json&apikey=${apiKey}`,
+      url: `http://www.omdbapi.com/?i=${imdbID}&plot=full&r=json&apikey=${apiKey.apiKey}`,
       success: function loadDataSuccess(data) {
         if (data.Response == "False") return this.context.router.push('/')
         $.get(`https://yts.ag/api/v2/list_movies.json?sort=seeds&query_term=${data.imdbID}`, (torrent) => {
@@ -54,8 +54,10 @@ class DisplayResults extends BaseComponent {
       movie.Background = movie.Poster.replace('SX300', 'SX800')
 
 
-    const newStyle = {backgroundImage : "url(" + movie.Background + ")"}
+    const imdbRating = movie.imdbRating != "N/A" ? `${movie.imdbRating}/10` : movie.imdbRating;
 
+    const newStyle = { backgroundImage : "url(" + movie.Background + ")" }
+    console.log(movie);
     return (
       <div>
         <div className="nooverflow">
@@ -66,78 +68,85 @@ class DisplayResults extends BaseComponent {
         <div className="inner contain">
           <div className="grid-row display_movie">
             <div className="xs-12 m-3">
-              <figure className="m0_poster"><img src={((movie.Poster != "N/A") ? movie.Poster : "/images/n-a.jpg")}/></figure>
+              <figure className="movie_poster"><img src={((movie.Poster != "N/A") ? movie.Poster : "/images/n-a.jpg")}/></figure>
+              <a href={movie.Website} className="button block primary">Official website</a>
               <a href={`http://www.imdb.com/title/${movie.imdbID}/`} className="button block black">More on IMDB</a>
               {this.state.torrentURL ? <a rel="noopener noreferrer" target="_blank" href={this.state.torrentURL} download className="button block default">Download torrent via. Yify</a> : null}
             </div>
             <div className="xs-12 m-9">
-              <h3 className="m0_title">{movie.Title}<span className="m0_year">({movie.Year})</span></h3>
-              <div className="grid-row m0_desc">
+
+              <div className="movie_information">
+                <h2 className="movie_title">{movie.Title}<span className="movie_year">({movie.Year})</span></h2>
+                <p>{movie.Plot}</p>
+                <small>{ `${imdbRating} | ${movie.Rated} | ${movie.Runtime} | ${movie.Genre} | ${movie.Released} (${movie.Country})`}</small>
+              </div>
+
+              <div className="grid-row movie_desc">
                 <div className="xs-12 m-4">
-                  <div className="m0_block">
-                    <h5 className="m0_sub side">Genres</h5>
-                    {movie.Genre}
+                  <div className="movie_block">
+                    <h5 className="movie_sub side">Genres</h5>
+                    <p>{movie.Genre}</p>
                   </div>
-                  <div className="m0_block rating">
+                  <div className="movie_block rating">
                     <div className="grid-row">
                       <div className="xs-6">
-                        <h5 className="m0_sub side">Rating</h5>
-                        {movie.imdbRating != "N/A" ? `${movie.imdbRating}/10` : movie.imdbRating}
+                        <h5 className="movie_sub side">Rating</h5>
+                        <p>{movie.imdbRating != "N/A" ? `${movie.imdbRating}/10` : movie.imdbRating}</p>
                       </div>
                       <div className="xs-6">
-                        <h5 className="m0_sub side">Votes</h5>
-                        {movie.imdbVotes}
+                        <h5 className="movie_sub side">Votes</h5>
+                        <p>{movie.imdbVotes}</p>
                       </div>
                     </div>
                   </div>
 
-                  <div className="m0_block">
-                    <h5 className="m0_sub side">Awards</h5>
-                    {movie.Awards}
+                  <div className="movie_block">
+                    <h5 className="movie_sub side">Awards</h5>
+                    <p>{movie.Awards}</p>
                   </div>
                 </div>
                 <div className="xs-12 m-8">
 
-                  <div className="m0_block">
+                  <div className="movie_block">
                     <div className="grid-row">
                       <div className="xs-6">
-                        <h5 className="m0_sub">Language</h5>
-                        {movie.Language}
+                        <h5 className="movie_sub">Language</h5>
+                        <p>{movie.Language}</p>
                       </div>
                       <div className="xs-6">
-                      <h5 className="m0_sub">Runtime</h5>
-                      {movie.Runtime}
+                      <h5 className="movie_sub">Runtime</h5>
+                      <p>{movie.Runtime}</p>
                       </div>
                     </div>
                   </div>
 
-                  <div className="m0_block">
-                    <h5 className="m0_sub">Full description</h5>
-                    {movie.Plot}
+                  <div className="movie_block">
+                    <h5 className="movie_sub">Full description</h5>
+                    <p>{movie.Plot}</p>
                   </div>
-                  <div className="m0_block">
-                    <h5 className="m0_sub">Actors</h5>
-                    {movie.Actors}
+                  <div className="movie_block">
+                    <h5 className="movie_sub">Actors</h5>
+                    <p>{movie.Actors}</p>
                   </div>
-                  <div className="m0_block">
-                    <h5 className="m0_sub">Director</h5>
-                    {movie.Director}
+                  <div className="movie_block">
+                    <h5 className="movie_sub">Director</h5>
+                    <p>{movie.Director}</p>
                   </div>
-                  <div className="m0_block">
-                    <h5 className="m0_sub">Writer</h5>
-                    {movie.Writer}
+                  <div className="movie_block">
+                    <h5 className="movie_sub">Writer</h5>
+                    <p>{movie.Writer}</p>
                   </div>
-                  <div className="m0_block">
-                    <h5 className="m0_sub">Rated</h5>
-                    {movie.Rated}
+                  <div className="movie_block">
+                    <h5 className="movie_sub">Rated</h5>
+                    <p>{movie.Rated}</p>
                   </div>
-                  <div className="m0_block type">
-                    <h5 className="m0_sub">Cinematic Type</h5>
-                    {movie.Type == 'movie' ? movie.Type : movie.Type + ` - ${movie.totalSeasons} Seasons`}
+                  <div className="movie_block type">
+                    <h5 className="movie_sub">Cinematic Type</h5>
+                    <p>{movie.Type == 'movie' ? movie.Type : movie.Type + ` - ${movie.totalSeasons} Seasons`}</p>
                   </div>
-                  <div className="m0_block">
-                    <h5 className="m0_sub">Release Date</h5>
-                    {movie.Released}
+                  <div className="movie_block">
+                    <h5 className="movie_sub">Release Date</h5>
+                    <p>{movie.Released}</p>
                   </div>
                   <a href={`http://www.imdb.com/title/${movie.imdbID}/`} className="button block black">More on IMDB</a>
 
