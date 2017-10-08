@@ -53,11 +53,9 @@ class DisplayResults extends BaseComponent {
       else if (movie.Poster)
       movie.Background = movie.Poster.replace('SX300', 'SX800')
 
-
     const imdbRating = movie.imdbRating != "N/A" ? `${movie.imdbRating}/10` : movie.imdbRating;
+    const newStyle = { backgroundImage : "url(" + movie.Background + ")" };
 
-    const newStyle = { backgroundImage : "url(" + movie.Background + ")" }
-    console.log(movie);
     return (
       <div>
         <div className="nooverflow">

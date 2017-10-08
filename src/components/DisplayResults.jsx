@@ -7,7 +7,6 @@ import apiKey from 'json!./../../key.json'
 class DisplayResults extends BaseComponent {
   constructor() {
     super()
-    console.log(apiKey)
     this._bind('loadSearch')
     this.state = {
       resultsFor: null,
