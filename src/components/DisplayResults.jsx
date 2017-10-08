@@ -37,7 +37,7 @@ class DisplayResults extends BaseComponent {
     const resultsFor = this.state.resultsFor
 
     $.ajax({
-      url: `http://www.omdbapi.com/?s=${resultsFor}&apikey=${apiKey.apiKey}`,
+      url: `//www.omdbapi.com/?s=${resultsFor}&apikey=${apiKey.apiKey}`,
       success: function loadDataSuccess(data) {
         this.setState({searchResults: data.Search})
       }.bind(this)

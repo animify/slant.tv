@@ -33,10 +33,10 @@ class DisplayResults extends BaseComponent {
     const imdbID = this.state.imdbID
 
     $.ajax({
-      url: `http://www.omdbapi.com/?i=${imdbID}&plot=full&r=json&apikey=${apiKey.apiKey}`,
+      url: `//www.omdbapi.com/?i=${imdbID}&plot=full&r=json&apikey=${apiKey.apiKey}`,
       success: function loadDataSuccess(data) {
         if (data.Response == "False") return this.context.router.push('/')
-        $.get(`https://yts.ag/api/v2/list_movies.json?sort=seeds&query_term=${data.imdbID}`, (torrent) => {
+        $.get(`//yts.ag/api/v2/list_movies.json?sort=seeds&query_term=${data.imdbID}`, (torrent) => {
           var newState = ''
           torrent.data.movie_count == 0 ? newState = {titleResults: data} : newState = {titleResults: data, torrentURL: torrent.data.movies[0].torrents[0].url, background: torrent.data.movies[0].background_image_original}
           this.setState(newState)
@@ -70,7 +70,7 @@ class DisplayResults extends BaseComponent {
             <div className="xs-12 m-3">
               <figure className="movie_poster"><img src={((movie.Poster != "N/A") ? movie.Poster : "/images/n-a.jpg")}/></figure>
               <a href={movie.Website} className="button block primary">Official website</a>
-              <a href={`http://www.imdb.com/title/${movie.imdbID}/`} className="button block black">More on IMDB</a>
+              <a href={`//www.imdb.com/title/${movie.imdbID}/`} className="button block black">More on IMDB</a>
               {this.state.torrentURL ? <a rel="noopener noreferrer" target="_blank" href={this.state.torrentURL} download className="button block default">Download torrent via. Yify</a> : null}
             </div>
             <div className="xs-12 m-9">
@@ -148,7 +148,7 @@ class DisplayResults extends BaseComponent {
                     <h5 className="movie_sub">Release Date</h5>
                     <p>{movie.Released}</p>
                   </div>
-                  <a href={`http://www.imdb.com/title/${movie.imdbID}/`} className="button block black">More on IMDB</a>
+                  <a href={`//www.imdb.com/title/${movie.imdbID}/`} className="button block black">More on IMDB</a>
 
                 </div>
               </div>
