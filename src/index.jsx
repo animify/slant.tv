@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { Route, Router, Switch } from 'react-router-dom';
+import { Route, BrowserRouter, Switch } from 'react-router-dom';
 import ReactGA from 'react-ga';
 import Controller from './components/Controller';
 import PageNotFound from './components/PageNotFound';
@@ -14,11 +14,11 @@ function logPageView() {
 }
 
 ReactDOM.render(
-<Router onUpdate={logPageView}>
+<BrowserRouter onUpdate={logPageView}>
 	<Switch>
-		<Route exact path="/" component={Controller} addHandlerKey home />
-		<Route path="/search/:id" component={Controller} addHandlerKey results />
-		<Route path="/id/:id" component={Controller} addHandlerKey show />
+		<Route exact path="/" render={(props) => (<Controller {...props} addHandlerKey home />)} />
+		<Route path="/search/:id" render={(props) => (<Controller {...props} addHandlerKey results />)} />
+		<Route path="/id/:id" render={(props) => (<Controller {...props} addHandlerKey show />)} />
 		<Route path="*" component={PageNotFound} />
 	</Switch>
-</Router>, document.getElementById('main'));
+</BrowserRouter>, document.getElementById('main'));

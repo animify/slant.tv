@@ -34,7 +34,6 @@ class DisplayResults extends BaseComponent {
 
   loadSearch() {
     const resultsFor = this.state.resultsFor;
-
     $.ajax({
       url: `//www.omdbapi.com/?s=${resultsFor}&apikey=${apiKey.apiKey}`,
       success: function loadDataSuccess(data) {
@@ -50,7 +49,7 @@ class DisplayResults extends BaseComponent {
 
     if (obj.length === undefined) {
       objArr.push(
-        <div className="xs-12 no_results">
+        <div className="xs-12 no_results" key="no-results">
           <img src="/images/no_results.png" />
           <h2>No results</h2>
           <h5>Your search returned no results</h5>
@@ -58,7 +57,9 @@ class DisplayResults extends BaseComponent {
       );
     } else {
       $.each(obj, (idx, movie) => {
-        const newStyle = { backgroundImage: 'url(' + ((movie.Poster !== 'N/A') ? movie.Poster : '/images/n-a.jpg') + ')' };
+        const newStyle = {
+          backgroundImage: `url(${((movie.Poster !== 'N/A') ? movie.Poster : '/images/n-a.jpg')})`,
+        };
         objArr.push(
           <Link to={`/id/${movie.imdbID}`} key={idx} className="xs-6 m-4 l-3 movie">
             <figure>

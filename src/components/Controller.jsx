@@ -17,7 +17,8 @@ class Controller extends BaseComponent {
   }
 
   init() {
-    this.setState({ searchFor: this.props.params.id });
+    const id = (this.props.match.params && this.props.match.params.id) || null;
+    this.setState({ searchFor: id });
   }
 
   componentWillMount() {
@@ -25,15 +26,15 @@ class Controller extends BaseComponent {
   }
 
   componentWillReceiveProps(nextProps) {
-    this.setState({ searchFor: nextProps.params.id });
+    this.setState({ searchFor: nextProps.match.params.id });
   }
 
   render() {
     return (
 <div>
-	{!this.props.route.home ? <NavBar /> : null}
-{this.props.route.home ? <HomeSearch /> : ((this.props.route.results) ? <DisplayResults resultsFor={this.state.searchFor} /> : <DisplayID imdbID={this.props.params.id} />)}
-	{!this.props.route.home ? <NavFooter /> : null}
+	{!this.props.home ? <NavBar /> : null}
+{this.props.home ? <HomeSearch /> : ((this.props.results) ? <DisplayResults resultsFor={this.state.searchFor} /> : <DisplayID imdbID={this.props.match.params.id} />)}
+	{!this.props.home ? <NavFooter /> : null}
 </div>
 );
   }

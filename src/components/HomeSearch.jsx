@@ -1,6 +1,6 @@
 import React from 'react';
 import $ from 'jquery';
-
+import { withRouter } from 'react-router-dom';
 import BaseComponent from './common/BaseComponent';
 import NavFooter from './NavFooter';
 
@@ -24,7 +24,7 @@ class HomeSearch extends BaseComponent {
     const searchEle = document.getElementById('r-search');
     if (searchEle) {
       if (searchEle.value !== '') {
-        this.context.router.push(`/search/${document.getElementById('r-search').value}`);
+        this.props.history.push(`/search/${document.getElementById('r-search').value}`);
       } else {
         $('#r-search').addClass('error').delay(3000).queue(() => {
           $(this).removeClass('error').dequeue();
@@ -55,4 +55,4 @@ class HomeSearch extends BaseComponent {
   }
 }
 
-export default HomeSearch;
+export default withRouter(HomeSearch);
