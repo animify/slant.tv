@@ -2,4 +2,3 @@ public/bundle.js.map
 public/*.json
 *.log
 node_modules
-key.json
