@@ -1,14 +1,14 @@
-const path = require('path')
-const webpack = require('webpack')
-const nib = require('nib')
-const jeet = require('jeet')
-const rupture = require('rupture')
+const path = require('path');
+const webpack = require('webpack');
+const nib = require('nib');
+const jeet = require('jeet');
+const rupture = require('rupture');
 
 module.exports = {
   devtool: 'hidden-source-map',
 
   entry: [
-    './src/index.jsx'
+    './src/index.jsx',
   ],
 
   output: {
@@ -20,16 +20,16 @@ module.exports = {
   plugins: [
     new webpack.NoErrorsPlugin(),
     new webpack.DefinePlugin({
-      "process.env": {
-        BROWSER: JSON.stringify(true)
-      }
+      'process.env': {
+        BROWSER: JSON.stringify(true),
+      },
     }),
     new webpack.optimize.UglifyJsPlugin({
       minimize: true,
       compress: {
-        warnings: false
-      }
-    })
+        warnings: false,
+      },
+    }),
   ],
 
   resolve: {
@@ -48,7 +48,7 @@ module.exports = {
     }, {
       test: /\.styl$/,
       loader: 'style-loader!css-loader!stylus-loader',
-      exculde: /node_modules/
+      exculde: /node_modules/,
     }, {
       test: /\.(woff|woff2)(\?v=\d+\.\d+\.\d+)?$/,
       loader: 'url?limit=10000&mimetype=application/font-woff',
@@ -61,10 +61,10 @@ module.exports = {
     }, {
       test: /\.svg(\?v=\d+\.\d+\.\d+)?$/,
       loader: 'url?limit=10000&mimetype=image/svg+xml',
-    }]
+    }],
   },
 
   stylus: {
-    use: [nib(), jeet(), rupture()]
-  }
+    use: [nib(), jeet(), rupture()],
+  },
 };

@@ -4,7 +4,7 @@
   "description": "",
   "scripts": {
     "pack:dev": "webpack-dev-server --hot --inline --progress --colors --host 0.0.0.0 --port 4000",
-    "pack:prod": "webpack -p --config webpack.prod.config.js --define process.env.NODE_ENV='production'"
+    "pack:prod": "webpack -p --config webpack.prod.config.js"
   },
   "author": "Stefan Mansson <mansson.io>",
   "license": "MIT",
