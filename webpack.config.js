@@ -1,13 +1,14 @@
-const path = require('path')
-const webpack = require('webpack')
-const nib = require('nib')
-const jeet = require('jeet')
-const rupture = require('rupture')
+const path = require('path');
+const webpack = require('webpack');
+const nib = require('nib');
+const jeet = require('jeet');
+const rupture = require('rupture');
 
 module.exports = {
 
   entry: [
-    'webpack-dev-server/client?http://0.0.0.0:4000',
+    'react-hot-loader/patch',
+    'webpack-hot-middleware/client?http://0.0.0.0:3002/',
     'webpack/hot/only-dev-server',
     './src/index.jsx',
   ],
@@ -18,53 +19,58 @@ module.exports = {
     publicPath: '/',
   },
 
-  plugins: [
-    new webpack.NoErrorsPlugin(),
-    new webpack.DefinePlugin({
-      "process.env": {
-        BROWSER: JSON.stringify(true)
-      }
-    })
-  ],
-
-  resolve: {
-    extensions: ['', '.js', '.jsx'],
-  },
+  devtool: 'inline-source-map',
 
   module: {
-    loaders: [{
-      test: /\.jsx$/,
-      loaders: ['react-hot', 'babel?presets[]=react,presets[]=es2015'],
-      include: path.join(__dirname, 'src'),
-      exclude: /node_modules/,
-    }, {
-      test: /\.css$/,
-      loader: 'style-loader!css-loader',
-    }, {
-      test: /\.styl$/,
-      loader: 'style-loader!css-loader!stylus-loader',
-      exculde: /node_modules/
-    }, {
-      test: /\.(woff|woff2)(\?v=\d+\.\d+\.\d+)?$/,
-      loader: 'url?limit=10000&mimetype=application/font-woff',
-    }, {
-      test: /\.ttf(\?v=\d+\.\d+\.\d+)?$/,
-      loader: 'url?limit=10000&mimetype=application/octet-stream',
-    }, {
-      test: /\.eot(\?v=\d+\.\d+\.\d+)?$/,
-      loader: 'file',
-    }, {
-      test: /\.svg(\?v=\d+\.\d+\.\d+)?$/,
-      loader: 'url?limit=10000&mimetype=image/svg+xml',
-    }]
+    rules: [
+      {
+        test: /\.jsx?$/,
+        use: [
+          'babel-loader',
+        ],
+        exclude: /node_modules/,
+      },
+      {
+        test: /\.(png|eot|svg|ttf|woff|woff2)$/,
+        loader: 'file-loader?name=[name].[ext]',
+      },
+      {
+        test: /\.json/,
+        loader: 'file-loader',
+      },
+      {
+        test: /\.styl$/,
+        use: [
+          'style-loader',
+          'css-loader',
+          {
+            loader: 'stylus-loader',
+          },
+        ],
+      },
+    ],
   },
-
-  stylus: {
-    use: [nib(), jeet(), rupture()]
+  resolve: {
+    extensions: ['.js', '.jsx'],
   },
+  plugins: [
+    new webpack.HotModuleReplacementPlugin(),
+    new webpack.NamedModulesPlugin(),
+    new webpack.NoEmitOnErrorsPlugin(),
+    new webpack.LoaderOptionsPlugin({
+      options: {
+        stylus: {
+          use: [nib(), jeet(), rupture()],
+        },
+        context: '/',
+      },
+    }),
+  ],
 
   devServer: {
-    contentBase: 'public/',
-    historyApiFallback: true
+    host: 'localhost',
+    port: 3002,
+    historyApiFallback: true,
+    hot: true,
   },
 };

@@ -1,64 +1,64 @@
-import React from 'react'
-import $ from 'jquery'
-import Link from 'react-router/lib/Link'
-import BaseComponent from './common/BaseComponent'
-import apiKey from 'json!./../../key.json'
+import React from 'react';
+import $ from 'jquery';
+import { Link } from 'react-router-dom';
+import BaseComponent from './common/BaseComponent';
+import apiKey from './../../key.json';
 
 class DisplayResults extends BaseComponent {
   constructor() {
-    super()
-    this._bind('loadSearch')
+    super();
+    this._bind('loadSearch');
     this.state = {
       resultsFor: null,
-      searchResults: null
-    }
+      searchResults: null,
+    };
   }
 
   componentWillMount() {
-    this.setState({resultsFor: this.props.resultsFor})
+    this.setState({ resultsFor: this.props.resultsFor });
   }
 
   componentDidMount() {
-    this.loadSearch()
-    document.getElementById('search').value = this.props.resultsFor
-    window.scrollTo(0, 0)
+    this.loadSearch();
+    document.getElementById('search').value = this.props.resultsFor;
+    window.scrollTo(0, 0);
   }
 
   componentDidUpdate(nextProps) {
-    if (nextProps.resultsFor != this.state.resultsFor) this.loadSearch()
+    if (nextProps.resultsFor != this.state.resultsFor) this.loadSearch();
   }
 
   componentWillReceiveProps(nextProps) {
-    this.setState({resultsFor: nextProps.resultsFor})
+    this.setState({ resultsFor: nextProps.resultsFor });
   }
 
   loadSearch() {
-    const resultsFor = this.state.resultsFor
+    const resultsFor = this.state.resultsFor;
 
     $.ajax({
       url: `//www.omdbapi.com/?s=${resultsFor}&apikey=${apiKey.apiKey}`,
       success: function loadDataSuccess(data) {
-        this.setState({searchResults: data.Search})
-      }.bind(this)
-    })
+        this.setState({ searchResults: data.Search });
+      }.bind(this),
+    });
   }
 
 
   render() {
-    const obj = this.state.searchResults || {}
-    var objArr = []
+    const obj = this.state.searchResults || {};
+    var objArr = [];
 
     if (obj.length === undefined) {
       objArr.push(
         <div className="xs-12 no_results">
-          <img src="/images/no_results.png"/>
+          <img src="/images/no_results.png" />
           <h2>No results</h2>
           <h5>Your search returned no results</h5>
         </div>
-      )
+      );
     } else {
-      $.each(obj, function(idx, movie) {
-        const newStyle = {backgroundImage : "url(" + ((movie.Poster != "N/A") ? movie.Poster : "/images/n-a.jpg") + ")"}
+      $.each(obj, function (idx, movie) {
+        const newStyle = { backgroundImage: 'url(' + ((movie.Poster != 'N/A') ? movie.Poster : '/images/n-a.jpg') + ')' };
         objArr.push(
           <Link to={`/id/${movie.imdbID}`} key={idx} className="xs-6 m-4 l-3 movie">
             <figure>
@@ -71,8 +71,8 @@ class DisplayResults extends BaseComponent {
               </div>
             </figure>
           </Link>
-        )
-      })
+        );
+      });
     }
     return (
       <div className="inner contain">
@@ -81,18 +81,18 @@ class DisplayResults extends BaseComponent {
           {objArr}
         </div>
       </div>
-    )
+    );
   }
 }
 
 DisplayResults.contextTypes = {
   router: React.PropTypes.object,
-  location: React.PropTypes.object
-}
+  location: React.PropTypes.object,
+};
 
 DisplayResults.propTypes = {
   display: React.PropTypes.object,
-  resultsFor: React.PropTypes.string
-}
+  resultsFor: React.PropTypes.string,
+};
 
-export default DisplayResults
+export default DisplayResults;

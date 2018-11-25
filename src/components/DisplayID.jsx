@@ -1,8 +1,7 @@
 import React from 'react';
 import $ from 'jquery';
-import Link from 'react-router/lib/Link';
 import BaseComponent from './common/BaseComponent';
-import apiKey from 'json!./../../key.json';
+import apiKey from './../../key.json';
 
 class DisplayResults extends BaseComponent {
   constructor(props) {

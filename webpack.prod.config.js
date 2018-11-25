@@ -5,7 +5,6 @@ const jeet = require('jeet');
 const rupture = require('rupture');
 
 module.exports = {
-  devtool: 'hidden-source-map',
 
   entry: [
     './src/index.jsx',
@@ -17,54 +16,57 @@ module.exports = {
     publicPath: '/',
   },
 
-  plugins: [
-    new webpack.NoErrorsPlugin(),
-    new webpack.DefinePlugin({
-      'process.env': {
-        BROWSER: JSON.stringify(true),
+  devtool: 'none',
+
+  module: {
+    rules: [
+      {
+        test: /\.jsx?$/,
+        use: [
+          'babel-loader',
+        ],
+        exclude: /node_modules/,
       },
-    }),
-    new webpack.optimize.UglifyJsPlugin({
-      minimize: true,
-      compress: {
-        warnings: false,
+      {
+        test: /\.(png|eot|svg|ttf|woff|woff2)$/,
+        loader: 'file-loader?name=[name].[ext]',
+      },
+      {
+        test: /\.json/,
+        loader: 'file-loader',
+      },
+      {
+        test: /\.styl$/,
+        use: [
+          'style-loader',
+          'css-loader',
+          {
+            loader: 'stylus-loader',
+          },
+        ],
+      },
+    ],
+  },
+  resolve: {
+    extensions: ['.js', '.jsx'],
+  },
+  plugins: [
+    new webpack.NamedModulesPlugin(),
+    new webpack.NoEmitOnErrorsPlugin(),
+    new webpack.LoaderOptionsPlugin({
+      options: {
+        stylus: {
+          use: [nib(), jeet(), rupture()],
+        },
+        context: '/',
       },
     }),
   ],
 
-  resolve: {
-    extensions: ['', '.js', '.jsx'],
-  },
-
-  module: {
-    loaders: [{
-      test: /\.jsx$/,
-      loaders: ['babel?presets[]=react,presets[]=es2015'],
-      include: path.join(__dirname, 'src'),
-      exclude: /node_modules/,
-    }, {
-      test: /\.css$/,
-      loader: 'style-loader!css-loader',
-    }, {
-      test: /\.styl$/,
-      loader: 'style-loader!css-loader!stylus-loader',
-      exculde: /node_modules/,
-    }, {
-      test: /\.(woff|woff2)(\?v=\d+\.\d+\.\d+)?$/,
-      loader: 'url?limit=10000&mimetype=application/font-woff',
-    }, {
-      test: /\.ttf(\?v=\d+\.\d+\.\d+)?$/,
-      loader: 'url?limit=10000&mimetype=application/octet-stream',
-    }, {
-      test: /\.eot(\?v=\d+\.\d+\.\d+)?$/,
-      loader: 'file',
-    }, {
-      test: /\.svg(\?v=\d+\.\d+\.\d+)?$/,
-      loader: 'url?limit=10000&mimetype=image/svg+xml',
-    }],
-  },
-
-  stylus: {
-    use: [nib(), jeet(), rupture()],
+  devServer: {
+    host: 'localhost',
+    port: 3002,
+    historyApiFallback: true,
+    hot: true,
   },
 };
