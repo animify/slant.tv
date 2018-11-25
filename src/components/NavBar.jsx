@@ -1,4 +1,5 @@
 import React from 'react';
+import { withRouter } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 
 import BaseComponent from './common/BaseComponent';
@@ -11,7 +12,7 @@ class NavBar extends BaseComponent {
 
   handleKeyPress(event) {
     if (event.key === 'Enter') {
-      this.context.router.push(`/search/${document.getElementById('search').value}`);
+      this.props.history.push(`/search/${document.getElementById('search').value}`);
     }
   }
 
@@ -28,4 +29,4 @@ class NavBar extends BaseComponent {
   }
 }
 
-export default NavBar;
+export default withRouter(NavBar);
