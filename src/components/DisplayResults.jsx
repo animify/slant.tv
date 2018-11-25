@@ -85,14 +85,4 @@ class DisplayResults extends BaseComponent {
   }
 }
 
-DisplayResults.contextTypes = {
-  router: React.PropTypes.object,
-  location: React.PropTypes.object,
-};
-
-DisplayResults.propTypes = {
-  display: React.PropTypes.object,
-  resultsFor: React.PropTypes.string,
-};
-
 export default DisplayResults;

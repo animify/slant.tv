@@ -28,9 +28,4 @@ class NavBar extends BaseComponent {
   }
 }
 
-NavBar.contextTypes = {
-  router: React.PropTypes.object,
-  location: React.PropTypes.object,
-};
-
 export default NavBar;

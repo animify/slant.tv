@@ -55,12 +55,4 @@ class HomeSearch extends BaseComponent {
   }
 }
 
-HomeSearch.contextTypes = {
-  router: React.PropTypes.object,
-  location: React.PropTypes.object,
-};
-
-HomeSearch.propTypes = {
-};
-
 export default HomeSearch;
