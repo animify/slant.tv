@@ -3,17 +3,17 @@ const webpack = require('webpack');
 const nib = require('nib');
 const jeet = require('jeet');
 const rupture = require('rupture');
+const MinifyPlugin = require('babel-minify-webpack-plugin');
 
 module.exports = {
-
   entry: [
     './src/index.jsx',
   ],
 
   output: {
-    path: path.join(__dirname, 'public'),
     filename: 'bundle.js',
-    publicPath: '/',
+    path: path.resolve(__dirname, 'public', 'dist'),
+    publicPath: '/dist/',
   },
 
   devtool: 'none',
@@ -26,10 +26,6 @@ module.exports = {
           'babel-loader',
         ],
         exclude: /node_modules/,
-      },
-      {
-        test: /\.(png|eot|svg|ttf|woff|woff2)$/,
-        loader: 'file-loader?name=[name].[ext]',
       },
       {
         test: /\.json/,
@@ -51,8 +47,11 @@ module.exports = {
     extensions: ['.js', '.jsx'],
   },
   plugins: [
-    new webpack.NamedModulesPlugin(),
-    new webpack.NoEmitOnErrorsPlugin(),
+    new webpack.HashedModuleIdsPlugin(),
+    new webpack.DefinePlugin({
+      'process.env.NODE_ENV': JSON.stringify('production'),
+    }),
+    new MinifyPlugin(),
     new webpack.LoaderOptionsPlugin({
       options: {
         stylus: {
@@ -62,11 +61,4 @@ module.exports = {
       },
     }),
   ],
-
-  devServer: {
-    host: 'localhost',
-    port: 3002,
-    historyApiFallback: true,
-    hot: true,
-  },
 };

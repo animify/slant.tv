@@ -25,7 +25,7 @@ class DisplayResults extends BaseComponent {
   }
 
   componentDidUpdate(nextProps) {
-    if (nextProps.resultsFor != this.state.resultsFor) this.loadSearch();
+    if (nextProps.resultsFor !== this.state.resultsFor) this.loadSearch();
   }
 
   componentWillReceiveProps(nextProps) {
@@ -46,7 +46,7 @@ class DisplayResults extends BaseComponent {
 
   render() {
     const obj = this.state.searchResults || {};
-    var objArr = [];
+    const objArr = [];
 
     if (obj.length === undefined) {
       objArr.push(
@@ -57,8 +57,8 @@ class DisplayResults extends BaseComponent {
         </div>
       );
     } else {
-      $.each(obj, function (idx, movie) {
-        const newStyle = { backgroundImage: 'url(' + ((movie.Poster != 'N/A') ? movie.Poster : '/images/n-a.jpg') + ')' };
+      $.each(obj, (idx, movie) => {
+        const newStyle = { backgroundImage: 'url(' + ((movie.Poster !== 'N/A') ? movie.Poster : '/images/n-a.jpg') + ')' };
         objArr.push(
           <Link to={`/id/${movie.imdbID}`} key={idx} className="xs-6 m-4 l-3 movie">
             <figure>

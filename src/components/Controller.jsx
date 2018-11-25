@@ -39,13 +39,4 @@ class Controller extends BaseComponent {
   }
 }
 
-Controller.contextTypes = {
-  router: React.PropTypes.object,
-};
-
-Controller.propTypes = {
-  location: React.PropTypes.object,
-  url: React.PropTypes.string,
-};
-
 export default Controller;

@@ -157,13 +157,4 @@ class DisplayResults extends BaseComponent {
   }
 }
 
-DisplayResults.contextTypes = {
-  router: React.PropTypes.object,
-  location: React.PropTypes.object,
-};
-
-DisplayResults.propTypes = {
-  imdbID: React.PropTypes.string,
-};
-
 export default DisplayResults;

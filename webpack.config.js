@@ -8,15 +8,15 @@ module.exports = {
 
   entry: [
     'react-hot-loader/patch',
-    'webpack-hot-middleware/client?http://0.0.0.0:3002/',
+    'webpack-hot-middleware/client?http://0.0.0.0:4000/',
     'webpack/hot/only-dev-server',
     './src/index.jsx',
   ],
 
   output: {
-    path: path.join(__dirname, 'public'),
     filename: 'bundle.js',
-    publicPath: '/',
+    path: path.join(__dirname, 'dist'),
+    publicPath: '/dist/',
   },
 
   devtool: 'inline-source-map',
@@ -62,14 +62,13 @@ module.exports = {
         stylus: {
           use: [nib(), jeet(), rupture()],
         },
-        context: '/',
       },
     }),
   ],
 
   devServer: {
     host: 'localhost',
-    port: 3002,
+    port: 4000,
     historyApiFallback: true,
     hot: true,
   },
