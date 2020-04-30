@@ -10,7 +10,7 @@
   "license": "MIT",
   "dependencies": {
     "imdb-api": "^2.2.1",
-    "jquery": "^3.4.0",
+    "jquery": "^3.5.0",
     "natives": "^1.1.6",
     "prop-types": "^15.6.2",
     "react": "^16.6.3",
