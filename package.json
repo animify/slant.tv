@@ -39,7 +39,7 @@
     "eslint-plugin-react": "^4.2.3",
     "file-loader": "^1.1.5",
     "fs": "0.0.1-security",
-    "http-proxy": "^1.13.2",
+    "http-proxy": "^1.18.1",
     "jeet": "^6.1.1",
     "json-loader": "^0.5.7",
     "nib": "^1.1.2",
